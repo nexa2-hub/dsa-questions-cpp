@@ -1,0 +1,115 @@
+#include<stdio.h>
+
+void insert(int []);
+void del(int []);
+void search(int []);
+void traversal(int[]);
+int a[10],n,i,v;
+void main()
+{
+
+	int c;
+	char ch;
+	printf("ENTER THE NO. OF ELEMENTS IN A:");
+	scanf("%d",&n);
+	printf("ENTER THE ELEMENTS IN A:");//asking all elements of array A
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+ printf("\n 1-INSERTION\n 2-DELETION\n 3-SEARCHING\n 4-travesal\n ");
+      do
+      {
+	printf("\n CHOICE=");//asking choice
+	scanf("%d",&c);
+	switch(c)
+	{
+	case 1:
+		insert(a);
+		break;
+	case 2:
+		del(a);
+		break;
+	case 3:
+		search(a);
+		break;
+		case 4:
+		traversal(a);
+		break;
+	}
+	printf(" WANT TO CONTINUE: ");
+	scanf("%c",&ch);
+      }while(ch=='Y'||ch=='y');
+
+}
+ void insert(int a[10]) //defination of insert
+ {
+	int val,p,temp;
+	temp=n-1;
+	printf("\n ENTER THE ELEMENT TO BE INSERTED:");
+	scanf("%d",&val);
+	printf("\n ENTER POSITION:");
+	scanf("%d",&p);
+	while(temp>=p)
+	{
+		a[temp+1]=a[temp]; //shifting elements of inserted pos. and below elements one position down.
+		--temp;
+	}
+	n=n+1;//incrementing the no. of elements in array
+	a[p]=val; //putting the input element in desired position
+	for(i=0;i<n;i++)
+	{
+		printf("\n a[%d]=%d",i,a[i]);
+	}
+ }
+  void del(int a[10]) //defination of deletion
+ {
+	int p,temp;
+	v=a[p];
+	printf("\n ENTER THE ELEMENT TO BE DELETED:");
+	scanf("%d",&p);
+	printf("\n DELETED ELEMENT:%d",a[p]);
+	for(temp=p;temp<n;temp++)
+	{
+		a[temp]=a[temp+1]; //moving the elemens which come after required pos.,oe pos. up.
+
+	}
+	n=n-1; //decrementing the no. of elements in array
+	for(i=0;i<n;i++)
+	{
+		printf("\n a[%d]=%d",i,a[i]);
+	}
+ }
+
+ void search(int a[10])
+ {
+	int val,flag=1,p;
+	printf("ENTER THE ELEMENT TO BE SEACHED:");
+	scanf("%d",&val);
+	for(i=0;i<n;i++)
+
+	{
+		if(a[i]==val)
+		{
+			flag=0;     //changing the value of flag in element found
+			p=i;        //storing the position of matched element
+			break;
+
+		}
+	}
+	if(flag==0)
+	{
+		printf("\n ELEMENT FOUND AT POSITION: %d",p);
+	}
+	else
+	{
+		printf(" \n ELEMENT NOT FOUND");
+	}
+ }
+void traversal(int a[10]) {
+    printf("\n CURRENT ARRAY ELEMENTS:");
+    for(i = 0; i < n; i++) {
+        printf("\n a[%d] = %d", i, a[i]);
+    }
+    printf("\n");
+}
